@@ -1,5 +1,5 @@
 package = "lua-resty-statsd"
-version = "3.0.2-resty-1"
+version = "3.0.2-1"
 source = {
   url = "git://github.com/mediba-system/lua-resty-statsd.git",
   tag = "v3.0.2-resty"
@@ -16,6 +16,6 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    statsd = "src/resty/statsd.lua"
+    statsd = "src/resty-statsd.lua"
   }
 }
