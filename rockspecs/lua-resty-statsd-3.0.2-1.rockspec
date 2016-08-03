@@ -16,6 +16,6 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    statsd = "src/resty-statsd.lua"
+    resty_statsd = "src/resty_statsd.lua"
   }
 }
