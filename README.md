@@ -1,15 +1,14 @@
-Lua Statsd client
+Lua Statsd client for OpenResty
 =================
 
-`lua-statsd-client` is a [Statsd](https://github.com/etsy/statsd) client for
-Lua. It supports all Statsd meter types.
+`lua-resty-statsd` is an application of the [patch](https://github.com/mediba-system/lua-resty-statsd/blob/master/src/resty_statsd.patch) to take advantage of the Nginx cosoket to `lua-statsd-client`.
+`lua-statsd-client` is a [Statsd](https://github.com/etsy/statsd) client for Lua. It supports all Statsd meter types.
 
 Installation
 ------------
 
 ```sh
-% wget https://raw.github.com/stvp/lua-statsd-client/master/rockspecs/statsd-2.0.0-1.rockspec
-% luarocks install statsd-2.0.0-1.rockspec
+% luarocks install lua-resty-statsd
 ```
 
 Usage
@@ -35,11 +34,7 @@ statsd:histogram( "page_render_time", 105 )
 statsd:meter( "page_load", 1 )
 ```
 
-Development
+Original
 -----------
 
-```
-% luarocks install busted
-% busted spec
-```
-
+https://github.com/stvp/lua-statsd-client
