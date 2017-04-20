@@ -1,5 +1,7 @@
---- statsd.lua	2016-08-03 13:49:37.000000000 +0900
-+++ resty_statsd.lua	2016-08-03 13:52:46.000000000 +0900
+diff --git a/src/resty_statsd.lua b/src/resty_statsd.lua
+index 094e99b..1a46e01 100644
+--- a/src/resty_statsd.lua
++++ b/src/resty_statsd.lua
 @@ -4,7 +4,7 @@
  
  local math = require "math"
@@ -9,3 +11,24 @@
  
  math.randomseed(os.time())
  
+@@ -132,7 +132,11 @@ return function(options)
+   local packet_size = options.packet_size or 508 --  RFC791
+ 
+   local udp = socket.udp()
+-  udp:setpeername(host, port)
++  local ok, err = udp:setpeername(host, port)
++
++  if not ok then
++    return nil, err
++  end
+ 
+   return {
+     namespace = namespace,
+@@ -147,6 +151,5 @@ return function(options)
+     meter = meter,
+     send = send,
+     send_to_socket = send_to_socket
+-  }
++  }, nil
+ end
+-
