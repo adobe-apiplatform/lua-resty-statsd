@@ -132,7 +132,11 @@ return function(options)
   local packet_size = options.packet_size or 508 --  RFC791
 
   local udp = socket.udp()
-  udp:setpeername(host, port)
+  local ok, err = udp:setpeername(host, port)
+
+  if not ok then
+    return nil, err
+  end
 
   return {
     namespace = namespace,
@@ -147,6 +151,5 @@ return function(options)
     meter = meter,
     send = send,
     send_to_socket = send_to_socket
-  }
+  }, nil
 end
-
